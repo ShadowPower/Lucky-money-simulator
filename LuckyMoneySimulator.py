@@ -7,12 +7,12 @@ import random
 #作者非常懒
 D = Decimal
 
-def 随机分配(红包列表, 红包个数):
+def 随机分配(红包列表):
     for i, 当前红包金额 in enumerate(红包列表):
         随机增减金额 = D(random.uniform(0, float(当前红包金额 - D('0.01')))).quantize(D('.00'))
         当前红包金额 -= 随机增减金额
         红包列表[i] = 当前红包金额 #将结果写回去
-        红包列表[int(random.uniform(0, 红包个数))] += 随机增减金额
+        红包列表[int(random.uniform(0, len(红包列表)))] += 随机增减金额
     random.shuffle(红包列表)
 
 总金额 = D(input('请输入总金额：')).quantize(D('.00'))
@@ -33,7 +33,7 @@ for 当前编号 in range(红包个数):
         普通红包.append(较小的那批红包金额)
 
 拼手气红包 = 普通红包[:]
-随机分配(拼手气红包, 红包个数)
+随机分配(拼手气红包)
 
 #输出分配结果
 for i, 当前红包 in enumerate(拼手气红包):
