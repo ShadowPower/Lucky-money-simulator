@@ -40,9 +40,7 @@ for i, 当前红包 in enumerate(拼手气红包):
     print('第', i+1, '个红包：', str(当前红包));
 
 #实现Decimal求和
-def add(x, y):
-    return x + y
-print('最终红包总金额：', reduce(add, 拼手气红包))
+print('最终红包总金额：', reduce(lambda x, y : x + y, 拼手气红包))
 
 #暂停查看结果
 input()
